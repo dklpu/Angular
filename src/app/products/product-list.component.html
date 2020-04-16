@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class='row'>
-        <div class='col-md-6'>
+        <div class='col-md-2'>
           <h4>Filtered by: {{listFilter}}</h4>
         </div>
       </div>
@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-          <tr *ngFor='let product of products'>
+          <tr *ngFor='let product of filteredProduct'>
             <td><img *ngIf ='showImage' [src]='product.imageUrl' [title]='product.productName' [style.width.px]='imageWidth' style.margin.px={{imageMargin}}></td>
             <td>{{product.productName}}</td>
             <td>{{product.productCode | uppercase | convertToSpaces: '-'}}</td>

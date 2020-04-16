@@ -13,7 +13,16 @@ export class ProductListComponent implements OnInit
     imageWidth:number=50;
     imageMargin:number=2;
     showImage:boolean=false;
-    listFilter:string='cart';
+    // listFilter:string='cart';
+    _listFilter:string;
+    get listFilter():string{
+      return this._listFilter;
+    }
+    set listFilter(value:string){
+      this._listFilter=value;
+      this.filteredProduct=this.listFilter?this.performFilter(this.listFilter):this.products;
+    }
+    filteredProduct:IProduct[];
     products:IProduct[]=[   
       {
               "productId": 1,
@@ -66,9 +75,21 @@ export class ProductListComponent implements OnInit
               "imageUrl": "assets/images/xbox-controller.png"
             }
           ];
+         
+          constructor() {
+            this.filteredProduct=this.products;
+            this.listFilter='cart';
+
+          }
           toggleImage():void
           {
             this.showImage=!this.showImage;
+          }
+          performFilter(filterBy:string):IProduct[]
+          {
+filterBy=filterBy.toLocaleLowerCase();
+return this.products.filter((product:IProduct)=>
+product.productName.toLocaleLowerCase().indexOf(filterBy)!==-1)
           }
           ngOnInit(): void {
             console.log('On init Appliation starts');
