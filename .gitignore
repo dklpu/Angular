@@ -44,6 +44,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-src/app/shared/star.component.css
-src/app/shared/star.component.html
-src/app/shared/star.component.ts
