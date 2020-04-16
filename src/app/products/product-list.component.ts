@@ -94,4 +94,7 @@ product.productName.toLocaleLowerCase().indexOf(filterBy)!==-1)
           ngOnInit(): void {
             console.log('On init Appliation starts');
           }
+          onRatingClicked(message:string):void{
+            this.pageTitle='Produt list: '+message;
+          }
 }
