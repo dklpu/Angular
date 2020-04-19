@@ -14,7 +14,8 @@ export class ProductListComponent implements OnInit
     imageWidth:number=50;
     imageMargin:number=2;
     showImage:boolean=false;
-    // listFilter:string='cart';
+    errorMessage:string;
+
     _listFilter:string;
     get listFilter():string{
       return this._listFilter;
@@ -34,14 +35,20 @@ export class ProductListComponent implements OnInit
           }
           performFilter(filterBy:string):IProduct[]
           {
-filterBy=filterBy.toLocaleLowerCase();
-return this.products.filter((product:IProduct)=>
-product.productName.toLocaleLowerCase().indexOf(filterBy)!==-1)
+              filterBy=filterBy.toLocaleLowerCase();
+              return this.products.filter((product:IProduct)=>
+              product.productName.toLocaleLowerCase().indexOf(filterBy)!==-1)
           }
           ngOnInit(): void {
             console.log('On init Appliation starts');
-            this.products=this.productService.getProducts();
-            this.filteredProduct=this.products;
+            this.productService.getProducts().subscribe({
+              next:products=>{
+              this.products=products,
+              this.filteredProduct=this.products;
+              },
+              error:err=>this.errorMessage=err
+            });
+          
           }
           onRatingClicked(message:string):void{
             this.pageTitle='Produt list: '+message;

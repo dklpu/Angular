@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/products/produt-detail.component.css
+src/app/products/produt-detail.component.html
+src/app/products/produt-detail.component.spec.ts
+src/app/products/produt-detail.component.ts
