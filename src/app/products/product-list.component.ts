@@ -3,7 +3,6 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component({
-selector:'pm-products',
 templateUrl:'./product-list.component.html',
 styleUrls:['./product-list.component.css']
 })
@@ -51,6 +50,6 @@ export class ProductListComponent implements OnInit
           
           }
           onRatingClicked(message:string):void{
-            this.pageTitle='Produt list: '+message;
+            this.pageTitle='Product list: '+message;
           }
 }
